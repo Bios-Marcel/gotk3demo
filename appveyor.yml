@@ -14,6 +14,7 @@ install:
   - SET MINGW_ROOT=C:\msys64\mingw64\
   - pacman --noconfirm --needed -Sy bash pacman pacman-mirrors
   - pacman --noconfirm -Su
+  - pacman --noconfirm -Su
   - pacman --noconfirm -S mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-pkg-config mingw-w64-x86_64-gtk3
   - bash -c "sed -i -e 's/-Wl,-luuid/-luuid/g' C:/msys64/mingw64/lib/pkgconfig/gdk-3.0.pc"
 
