@@ -1,0 +1,22 @@
+clone_folder: c:\gopath\src\github.com\Bios-Marcel\gotk3demo
+
+environment:
+  GOPATH: c:\gopath
+
+stack: go 1.10
+
+artifacts:
+  - path: gotk3demos.exe
+    name: gotk3demo.exe
+
+install:
+  - SET PATH=%PATH%;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\Inno Setup 5
+  - SET MINGW_ROOT=C:\msys64\mingw64\
+  - pacman --noconfirm --needed -Sy bash pacman pacman-mirrors
+  - pacman --noconfirm -Su
+  - pacman --noconfirm -S mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-pkg-config mingw-w64-x86_64-gtk3
+  - bash -c "sed -i -e 's/-Wl,-luuid/-luuid/g' C:/msys64/mingw64/lib/pkgconfig/gdk-3.0.pc"
+
+build_script:
+  - go get -v ./...
+  - go build -i -o gotk3demo.exe -ldflags "-H windowsgui"
