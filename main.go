@@ -16,6 +16,14 @@ func main() {
 		log.Fatalf("Error creating new gtk3 application: %s.", gtkErr.Error())
 	}
 
+	app.Connect("activate", func() {
+		buildApplicationWindow()
+	})
+
+	app.Run(nil)
+}
+
+func buildApplicationWindow() {
 	window, gtkErr := gtk.ApplicationWindowNew(app)
 	if gtkErr != nil {
 		log.Fatalf("Error creating application windows: %s", gtkErr.Error())
@@ -46,6 +54,4 @@ func main() {
 
 	window.Add(layout)
 	window.ShowAll()
-
-	app.Run(nil)
 }
