@@ -6,11 +6,11 @@ environment:
 stack: go 1.10
 
 artifacts:
-  - path: gotk3demos.exe
+  - path: gotk3demo.exe
     name: gotk3demo.exe
 
 install:
-  - SET PATH=%PATH%;C:\msys64\mingw64\bin;C:\msys64\usr\bin;C:\Program Files (x86)\Inno Setup 5
+  - SET PATH=%PATH%;C:\msys64\mingw64\bin;C:\msys64\usr\bin
   - SET MINGW_ROOT=C:\msys64\mingw64\
   - pacman --noconfirm --needed -Sy bash pacman pacman-mirrors
   - pacman --noconfirm -Su
